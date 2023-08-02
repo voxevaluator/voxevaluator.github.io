@@ -27,14 +27,14 @@
 				<br>
 
 <h2 id="abstract">Abstract</h2>
-<p> Text cannot encompass all the information in audio, leading to restricted controllability in audio generation when relying solely on text. To address this issue, we propose a system that enhances the controllability of existing pre-trained text-to-audio models by incorporating other conditions including content (timestamp) and style (pitch and energy) information as a supplement to the text, which achieves fine-grained control over the temporal order, pitch, and energy. To preserve the diversity of generation, we employ a trainable control condition encoder, which enhances the comprehension of sound events by a large language model, and Fusion-Net to encode and fuse the additional conditions, while keeping the weights of the pre-trained text-to-audio model frozen. Due to the lack of suitable datasets and evaluation metrics for benchmarking, we consolidate the existing datasets into a new dataset comprising the audio and corresponding conditions and propose a series of metrics to evaluate the controllability performance of our system. Experimental results demonstrate that our system successfully achieves fine-grained control and possesses zero-shot capability to accomplish controllable audio generation. Audio samples and our dataset are publicly available. </p>
+<p> Text cannot encompass all the information in audio, leading to restricted controllability in audio generation when relying solely on text. To address this issue, we propose a model that enhances the controllability of existing pre-trained text-to-audio models by incorporating other conditions including content (timestamp) and style (pitch contour and energy contour) information as a supplement to the text, which achieves fine-grained control over the temporal order, pitch, and energy. To preserve the diversity of generation, we employ a trainable control condition encoder, which enhances the comprehension of sound events by a large language model, and a Fusion-Net to encode and fuse the additional conditions, while keeping the weights of the pre-trained text-to-audio model frozen. Due to the lack of suitable datasets and evaluation metrics for benchmarking, we consolidate the existing datasets into a new dataset comprising the audio and the corresponding conditions and use a series of metrics to evaluate the controllability performance. Experimental results demonstrate that our model successfully achieves fine-grained control and possesses zero-shot capability to accomplish controllable audio generation. Audio samples and our dataset are publicly available. </p>
 
 
 <h2 id="content">Content</h2>
 <b><a href="#dataset">1. Dataset</a></b><br>
 <a href="#promptspeech">1.1 AudioCondition</a><br>
 <b><a href="#audio samples">2. Audio Samples</a></b><br>
-<a href="#Part 1">2.1 Comparison of Different Systems</a><br>
+<a href="#Part 1">2.1 Comparison of Different Models</a><br>
 <a href="#Part 2">2.2 Comparison of Different Control Conditions</a><br>
 <a href="#Part 3">2.3 Comparison of Different Text Conditions</a><br>
 
@@ -64,22 +64,22 @@
 </table>
 
 <h2 id="audio samples">2. Audio Samples</h2>
-<p> The following parts are the audio samples from ground-truth recordings (denoted as GT), our system, and Tango. We demonstrate from the following three aspects: </p>
-<p> <b>Comparison of Different Systems</b>: we aim to show that we can generate audio that is more consistent with the ground-truth recordings under the help of control conditions.</p>
+<p> The following parts are the audio samples from ground-truth recordings (denoted as GT), our model, and Tango. We demonstrate from the following three aspects: </p>
+<p> <b>Comparison of Different Models</b>: we aim to show that we can generate audio that is more consistent with the ground-truth recordings under the help of control conditions.</p>
 <p> <b>Comparison of Different Control Conditions</b>: we aim to show that we can control the attributes of audio with different control conditions.</p>
 <p> <b>Comparison of Different Text Conditions</b>: we aim to show that we can generate different audio using different text control conditions while maintaining consistency with the control conditions.</p>
 
-<h3 id="Part 1">2.1 Comparison of Different Systems</h3>
-<p> Note that audio samples in this part are from ground-truth recordings, our system, and Tango, which show that our system can generate audio that is more consistent with the ground-truth recordings under the help of control conditions.</p>
-<p> Our system takes the text and control conditions as input, while Tango only takes the text conditions as input. </p>
+<h3 id="Part 1">2.1 Comparison of Different Models</h3>
+<p> Note that audio samples in this part are from ground-truth recordings, our model, and Tango, which show that our model can generate audio that is more consistent with the ground-truth recordings under the help of control conditions.</p>
+<p> Our model takes the text and control conditions as input, while Tango only takes the text conditions as input. </p>
 
 <h4 id="Temporal Order1">2.1.1 Temporal Order</h4>
 <p> We only need sound effects or noise during 1-3 seconds, but in the entire audio generated by Tango, there are sound effects or noise present throughout. </p>
-<p>[Our system, Tango, GT]: Text Condition: <em> Various sound effects and noise are present. </em></p>
+<p>[Our model, Tango, GT]: Text Condition: <em> Various sound effects and noise are present. </em></p>
 <table>
 <thead>
 <tr>
-<th style="text-align: center">Our System</th>
+<th style="text-align: center">Our Model</th>
 <th style="text-align: center">Tango</th>
 <th style="text-align: center">GT</th>
 </tr>
@@ -97,11 +97,11 @@
 </table>
 
 <!--
-<p>[Our system, Tango, GT]: Text Condition: <em> The sound of a door closing in a small room is the only sound in this recording. </em></p>
+<p>[Our model, Tango, GT]: Text Condition: <em> The sound of a door closing in a small room is the only sound in this recording. </em></p>
 <table>
 <thead>
 <tr>
-<th style="text-align: center">Our System</th>
+<th style="text-align: center">Our Model</th>
 <th style="text-align: center">Tango</th>
 <th style="text-align: center">GT</th>
 </tr>
@@ -118,11 +118,11 @@
 </tbody>
 </table>
 
-<p>[Our system, Tango, GT]: Text Condition: <em> Music and male singing can be heard. </em></p>
+<p>[Our model, Tango, GT]: Text Condition: <em> Music and male singing can be heard. </em></p>
 <table>
 <thead>
 <tr>
-<th style="text-align: center">Our System</th>
+<th style="text-align: center">Our Model</th>
 <th style="text-align: center">Tango</th>
 <th style="text-align: center">GT</th>
 </tr>
@@ -143,11 +143,11 @@
 
 <h4 id="Pitch1">2.1.2 Pitch</h4>
 <p> We only need a high pitch sound (train whistle) at the beginning, but in the audio generated by Tango, it appears both at the beginning and the end. </p>
-<p>[Our system, Tango, GT]: Text Condition: <em> The sounds of a train and clicking wheels can be heard. </em></p>
+<p>[Our model, Tango, GT]: Text Condition: <em> The sounds of a train and clicking wheels can be heard. </em></p>
 <table>
 <thead>
 <tr>
-<th style="text-align: center">Our System</th>
+<th style="text-align: center">Our Model</th>
 <th style="text-align: center">Tango</th>
 <th style="text-align: center">GT</th>
 </tr>
@@ -165,11 +165,11 @@
 </table>
 
 <!--
-<p>[Our system, Tango, GT]: Text Condition: <em> Waves, surf, and breathing sounds are heard. </em></p>
+<p>[Our model, Tango, GT]: Text Condition: <em> Waves, surf, and breathing sounds are heard. </em></p>
 <table>
 <thead>
 <tr>
-<th style="text-align: center">Our System</th>
+<th style="text-align: center">Our Model</th>
 <th style="text-align: center">Tango</th>
 <th style="text-align: center">GT</th>
 </tr>
@@ -186,11 +186,11 @@
 </tbody>
 </table>
 
-<p>[Our system, Tango, GT]: Text Condition: <em> People breathe, make human sounds, and tap with background noise. </em></p>
+<p>[Our model, Tango, GT]: Text Condition: <em> People breathe, make human sounds, and tap with background noise. </em></p>
 <table>
 <thead>
 <tr>
-<th style="text-align: center">Our System</th>
+<th style="text-align: center">Our Model</th>
 <th style="text-align: center">Tango</th>
 <th style="text-align: center">GT</th>
 </tr>
@@ -209,11 +209,11 @@
 -->
 <h4 id="Energy1">2.1.3 Energy</h4>
 <p> We only need two high energy segments, but in the audio generated by Tango, it has a lot of energy fluctuations. </p>
-<p>[Our system, Tango, GT]: Text Condition: <em> Mechanisms, clicking, a buzzer, an alarm, and breathing are heard. </em></p>
+<p>[Our model, Tango, GT]: Text Condition: <em> Mechanisms, clicking, a buzzer, an alarm, and breathing are heard. </em></p>
 <table>
 <thead>
 <tr>
-<th style="text-align: center">Our System</th>
+<th style="text-align: center">Our Model</th>
 <th style="text-align: center">Tango</th>
 <th style="text-align: center">GT</th>
 </tr>
@@ -231,11 +231,11 @@
 </table>
 
 <!--
-<p>[Our system, Tango, GT]: Text Condition: <em> A vehicle is driving on water and revving with man speaking. </em></p>
+<p>[Our model, Tango, GT]: Text Condition: <em> A vehicle is driving on water and revving with man speaking. </em></p>
 <table>
 <thead>
 <tr>
-<th style="text-align: center">Our System</th>
+<th style="text-align: center">Our Model</th>
 <th style="text-align: center">Tango</th>
 <th style="text-align: center">GT</th>
 </tr>
@@ -252,11 +252,11 @@
 </tbody>
 </table>
 
-<p>[Our system, Tango, GT]: Text Condition: <em> Music is playing. </em></p>
+<p>[Our model, Tango, GT]: Text Condition: <em> Music is playing. </em></p>
 <table>
 <thead>
 <tr>
-<th style="text-align: center">Our System</th>
+<th style="text-align: center">Our Model</th>
 <th style="text-align: center">Tango</th>
 <th style="text-align: center">GT</th>
 </tr>
@@ -274,10 +274,10 @@
 </table>
 -->
 <h3 id="Part 2">2.2 Comparison of Different Control Conditions</h3>
-<p> Note that audio samples in this part are from our system, which show that our system can control the attributes of audio with different control conditions.</p>
+<p> Note that audio samples in this part are from our model, which show that our model can control the attributes of audio with different control conditions.</p>
 
 <h4 id="Temporal Order2">2.2.1 Temporal Order</h4>
-<p> Our system accepts the timestamp of varying durations, onsets and end offsets as the control conditions, while keeping the text condition consistent. </p>
+<p> Our model accepts the timestamp of varying durations, onsets and end offsets as the control conditions, while keeping the text condition consistent. </p>
 <p>Control Condition-[1, 2, 3]: Text Condition: <em> Various sound effects and noise are present. </em></p>
 <table>
 <thead>
@@ -304,7 +304,7 @@
 </table>
 
 <h4 id="Pitch2">2.2.2 Pitch</h4>
-<p> Our system accepts the medium, low, and high pitch as the control conditions, while keeping the text condition consistent. </p>
+<p> Our model accepts the medium, low, and high pitch as the control conditions, while keeping the text condition consistent. </p>
 <p>Control Condition-[1, 2, 3]: Text Condition: <em> The sounds of a train and clicking wheels can be heard. </em></p>
 <table>
 <thead>
@@ -331,7 +331,7 @@
 </table>
 
 <h4 id="Energy2">2.2.3 Energy</h4>
-<p> Our system accepts the medium, low, and high energy as the control conditions, while keeping the text condition consistent. </p>
+<p> Our model accepts the medium, low, and high energy as the control conditions, while keeping the text condition consistent. </p>
 <p>Control Condition-[1, 2, 3]: Text Condition: <em> Mechanisms, clicking, a buzzer, an alarm, and breathing are heard. </em></p>
 <table>
 <thead>
@@ -358,10 +358,10 @@
 </table>
 
 <h3 id="Part 3">2.3 Comparison of Different Text Conditions</h3>
-<p> Note that audio samples in this part are from our system, which show that our system can generate different audio using different text control conditions while maintaining consistency with the control conditions.</p>
+<p> Note that audio samples in this part are from our model, which show that our model can generate different audio using different text control conditions while maintaining consistency with the control conditions.</p>
 
 <h4 id="Temporal Order3">2.3.1 Temporal Order</h4>
-<p> Our system accepts different text conditions, while keeping the timestamp as control condition consistent. </p>
+<p> Our model accepts different text conditions, while keeping the timestamp as control condition consistent. </p>
 <p>Text Condition-1: Text Condition: <em> The sound of a door closing in a small room is the only sound in this recording. </em></p>
 <p>Text Condition-2: Text Condition: <em> In this recording, the sole sound is that of a door shutting in a small room. </em></p>
 <p>Text Condition-3: Text Condition: <em> There is only the sound of a door closing in a small room within this recording. </em></p>
@@ -390,7 +390,7 @@
 </table>
 
 <h4 id="Pitch3">2.3.2 Pitch</h4>
-<p> Our system accepts different text conditions, while keeping the pitch as control condition consistent. </p>
+<p> Our model accepts different text conditions, while keeping the pitch as control condition consistent. </p>
 <p>Text Condition-1: Text Condition: <em> Waves, surf, and breathing sounds are heard. </em></p>
 <p>Text Condition-2: Text Condition: <em> One can hear the sounds of waves, surf, and breathing in the recording. </em></p>
 <p>Text Condition-3: Text Condition: <em> The recording captures the sound of waves, surf, and breathing. </em></p>
@@ -419,7 +419,7 @@
 </table>
 
 <h4 id="Energy3">2.3.3 Energy</h4>
-<p> Our system accepts different text conditions, while keeping the energy as control condition consistent. </p>
+<p> Our model accepts different text conditions, while keeping the energy as control condition consistent. </p>
 <p>Text Condition-1: Text Condition: <em> Music is playing. </em></p>
 <p>Text Condition-2: Text Condition: <em> Play music. </em></p>
 <p>Text Condition-3: Text Condition: <em> Music can be heard. </em></p>
