@@ -39,8 +39,8 @@
 <a href="#Part 3">2.3 Comparison of Different Text Conditions</a><br>
 
 <h2 id="dataset">1. Dataset</h2>
-<p> Given that there are no TTA datasets with both text and control conditions, we integrate the existing datasets to a new dataset called AudioCondition that consists of the audio along with the corresponding conditions. The text condition is obtained from WavCaps, a caption dataset based on ChatGPT and processed through a three-stage pipeline to filter noisy data and produce high-quality text. For the timestamp, we obtained from AudiosetStrong, a subset of Audioset, containing 1.8M audio with frame-level timestamp for 456 sound events. For the pitch and energy, we extract the value of them from audio with signal processing tools. Due to the limited number of sound events supported by the current sound event detection (SED) models, we only select audio that includes sound events supported by SED models for test set. We split AudioCondition into three sets: 89557 samples for training, 1398 for validation, and 1110 for testing, which is publicly available.</p>
-<p> Note that we also release all of the test set that here. For the timestamp, you can find in the "data_numpy" of the dataset, and for the pitch and energy, you can obtain them using signal processing tools.</p>
+<p> Given that there are no TTA datasets with both text and control conditions, we integrate the existing datasets to a new dataset called AudioCondition that consists of the audio along with the corresponding conditions. The text condition is obtained from WavCaps, a caption dataset based on ChatGPT and processed through a three-stage pipeline to filter noisy data and produce high-quality text. For the timestamp, we obtained from AudiosetStrong, a subset of Audioset, containing 1.8M audio with frame-level timestamp for 456 sound events. For the pitch contour and energy contour, we extract the value of them from audio with signal processing tools. Due to the limited number of sound events supported by the current sound event detection (SED) models, we only select audio that includes sound events supported by SED models for test set. We split AudioCondition into three sets: 89557 samples for training, 1398 samples for validation, and 1110 samples for testing, which is publicly available.</p>
+<p> Note that we also release all of the test set that here. For the timestamp, you can find in the "data_numpy" of the dataset, and for the pitch contour and energy contour, you can obtain them using signal processing tools.</p>
 
 <h3 id="promptspeech">1.1 AudioCondition</h3>
 <p> You can download AudioCondition from the table below and the number in the table corresponds to the amount of downloaded data. </p>
@@ -304,7 +304,7 @@
 </table>
 
 <h4 id="Pitch2">2.2.2 Pitch</h4>
-<p> Our model accepts the medium, low, and high pitch as the control conditions, while keeping the text condition consistent. </p>
+<p> Our model accepts the medium, low, and high pitch contour as the control conditions, while keeping the text condition consistent. </p>
 <p>Control Condition-[1, 2, 3]: Text Condition: <em> The sounds of a train and clicking wheels can be heard. </em></p>
 <table>
 <thead>
@@ -331,7 +331,7 @@
 </table>
 
 <h4 id="Energy2">2.2.3 Energy</h4>
-<p> Our model accepts the medium, low, and high energy as the control conditions, while keeping the text condition consistent. </p>
+<p> Our model accepts the medium, low, and high energy contour as the control conditions, while keeping the text condition consistent. </p>
 <p>Control Condition-[1, 2, 3]: Text Condition: <em> Mechanisms, clicking, a buzzer, an alarm, and breathing are heard. </em></p>
 <table>
 <thead>
@@ -390,7 +390,7 @@
 </table>
 
 <h4 id="Pitch3">2.3.2 Pitch</h4>
-<p> Our model accepts different text conditions, while keeping the pitch as control condition consistent. </p>
+<p> Our model accepts different text conditions, while keeping the pitch contour as control condition consistent. </p>
 <p>Text Condition-1: Text Condition: <em> Waves, surf, and breathing sounds are heard. </em></p>
 <p>Text Condition-2: Text Condition: <em> One can hear the sounds of waves, surf, and breathing in the recording. </em></p>
 <p>Text Condition-3: Text Condition: <em> The recording captures the sound of waves, surf, and breathing. </em></p>
@@ -419,7 +419,7 @@
 </table>
 
 <h4 id="Energy3">2.3.3 Energy</h4>
-<p> Our model accepts different text conditions, while keeping the energy as control condition consistent. </p>
+<p> Our model accepts different text conditions, while keeping the energy contour as control condition consistent. </p>
 <p>Text Condition-1: Text Condition: <em> Music is playing. </em></p>
 <p>Text Condition-2: Text Condition: <em> Play music. </em></p>
 <p>Text Condition-3: Text Condition: <em> Music can be heard. </em></p>
